@@ -25,22 +25,27 @@ npm run dev
    - **AI 回答**：在 `src/components/SearchBox.vue` 的 **第 25 行**：
      ```javascript
      //目前版本改在第62行
-     const 用户名 = ref('')
+     const 用戶名 = ref('')
      ```
-     這行就像一個「開關盒子」，會自動記住你打的字。
+     **AI 比喻**：這行就像一個「開關盒子」，會自動記住你打的字。
 
 3. **「哪一行是負責發送網路請求到 GitHub？」**
    - 這是為了理解「怎麼跟伺服器要資料」
    - **AI 回答**：在 `src/components/SearchBox.vue` 的 **第 73 行**：
      ```javascript
-     const 資料 = await fetchGitHubUser(用户名.value)
+     //目前版本改在第92行
+     const 資料 = await fetchGitHubUser(用戶名.value)
      ```
-     這行就像「打電話給 GitHub 的圖書館管理員」。
+     **AI 比喻**：這行就像「打電話給 GitHub 的圖書館管理員」。
 
 4. **「哪一行是負責把結果顯示在畫面上？哪一行是負責 Loading 狀態？哪一行是負責錯誤訊息？」**
    - 這是為了理解「畫面是怎麼變化的」
    - **AI 回答**：
-     - **顯示結果**：在 `src/components/SearchBox.vue` 的 **第 22-34 行**（用 `v-if="用戶資料"` 判斷有沒有資料，有的話就顯示卡片）
+     - **顯示結果**：在 `src/components/SearchBox.vue` 的 **第 22-34 行**
+     ```
+     v-if="用戶資料"（用來判斷有沒有資料，有的話就顯示卡片）
+     ```
+     
      - **Loading 狀態**：在 **第 14-15 行**（按鈕顯示「搜尋中...」，用 `載入中` 這個開關控制）
      - **錯誤訊息**：在 **第 20 行**（`v-if="錯誤訊息"` 顯示錯誤）和 **第 81 行**（`錯誤訊息.value = '找不到這個用戶，請檢查拼字！'`）
 
@@ -63,7 +68,7 @@ npm run dev
 
 ---
 
-### AI 用什麼「比喻」讓我聽懂？
+### AI 的對專業術語的比喻
 
 | Vue 術語 | AI 的比喻 |
 |----------|-----------|
@@ -83,10 +88,10 @@ npm run dev
 
 在 `src/components/SearchBox.vue` 的 **第 6 行**：
 ```vue
-<input v-model="用户名" ... />
+<input v-model="用戶名" ... />
 ```
 
-> `v-model="用户名"` 就像「一條看不見的橡皮筋」，連接著輸入框和那個「開關盒子」（第 25 行的 `ref`）。當你在輸入框打字的時候，盒子裡的內容會自動跟著變；反過來，如果盒子裡的內容變了，輸入框也會跟著變。
+> `v-model="用戶名"` 就像「一條看不見的橡皮筋」，連接著輸入框和那個「開關盒子」（第 25 行的 `ref`）。當你在輸入框打字的時候，盒子裡的內容會自動跟著變；反過來，如果盒子裡的內容變了，輸入框也會跟著變。
 
 **關於網路請求，AI 說：**
 
@@ -108,7 +113,7 @@ async function fetchGitHubUser(用戶名: string): Promise<GitHubUser> {
 
 ---
 
-## 技術栈
+## 技術站
 
 - Vue 3 + TypeScript
 - Vite
